@@ -1,12 +1,29 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <locale.h>
 
 int main(){
-    const float CMILHA = 0.62137;
-    float km = 143;
-    float milha = km * CMILHA;
+    setlocale(LC_ALL, "Portuguese");
+    float ladoa;
+    float ladob;
+    float ladoc;
 
-    printf("100 Quil√¥metros em milhas √©: %.2f", milha);
+    printf("Digite o primeiro lado do tri‚ngulo: ");
+    scanf("%f", &ladoa);
+
+    printf("Digite o segundo lado do tri‚ngulo: ");
+    scanf("%f", &ladob);
+
+    printf("Digite o terceiro lado do tri‚ngulo: ");
+    scanf("%f", &ladoc);
+    
+    if( /* lado A */ ((abs(ladob - ladoc) < ladoa) && (ladoa < (ladob + ladoc))) && /* Lado B */ ((abs(ladoa - ladoc) < ladob) && (ladob < (ladoa + ladoc))) && /* Lado C */ ((abs(ladoa - ladob) < ladoc) && (ladoc < (ladoa + ladob)))){
+        float perimetro = ladoa + ladob + ladoc;
+        printf("O perÌmetro do tri‚ngulo È %.2f.", perimetro);
+    }
+    else{
+        printf("N„o È possÌvel formar um tri‚ngulo com os dados fornecidos.");
+    }
 
     return 1;
 }
